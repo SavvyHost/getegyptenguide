@@ -4,7 +4,7 @@ import TravelPackagePage from "@/components/molecules/TravelCardSearch/TravelCar
 import SearchInput from "@/components/atoms/Search/Search";
 import { ToursData } from "@/types/tour";
 import PaginationExample from "@/components/molecules/Pagination";
-import Explore from "@/components/molecules/ExploreTours";
+import Explore from "@/components/molecules/ExploreExcursios";
 
 interface LaptopProps {
   toursData: ToursData;
