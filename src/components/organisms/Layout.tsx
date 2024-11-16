@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { Footer, Navbar } from ".";
+import ContentLoader from "../atoms/LoadingIndicator";
 
 type Layout_Tp = {
   children: ReactElement;
@@ -7,9 +8,9 @@ type Layout_Tp = {
 
 function Layout({ children }: Layout_Tp) {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      {children}
+      <ContentLoader>{children}</ContentLoader>
       <Footer />
     </div>
   );
