@@ -13,8 +13,6 @@ import MobileMenu from "./MobileMenu";
 import DesktopMenu from "./DesktopMenu";
 import { useRouter } from "next/router";
 import { useWishlist } from "@/contexts/wishlist-context";
-import Image from "next/image";
-import LOGO from "../../../../public/assets/raisen.png";
 
 interface NavLink {
   href: string;
@@ -26,13 +24,53 @@ interface HeaderProps {
   className?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ header, className }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const useScrollHeader = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+
+      // Show header if:
+      // 1. Scrolling up
+      // 2. At the top of the page (within first 10px)
+      // 3. User hasn't scrolled much (less than 50px) to prevent jumpiness
+      setVisible(
+        !isScrollingDown ||
+          currentScrollPos < 10 ||
+          Math.abs(currentScrollPos - prevScrollPos) < 50
+      );
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    // Add throttling to prevent too many updates
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
+  }, [prevScrollPos]);
+
+  return visible;
+};
+
+export const Header: React.FC<HeaderProps> = ({ header, className }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const router = useRouter();
   const { wishlistCount } = useWishlist();
+  const visible = useScrollHeader();
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,19 +81,6 @@ export const Header: React.FC<HeaderProps> = ({ header, className }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  const handleScroll = () => {
-    if (!isDesktop) return;
-
-    const currentScrollPos = window.pageYOffset;
-    setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible, isDesktop]);
 
   const handleLanguageChange = () => {
     alert("Language change button clicked!");
@@ -77,23 +102,14 @@ export const Header: React.FC<HeaderProps> = ({ header, className }) => {
     <>
       <header
         className={`fixed top-0 w-full z-40 bg-accent-white shadow-md transition-transform duration-300 ${
-          isDesktop && !visible ? "-translate-y-full" : "translate-y-0"
+          !visible ? "-translate-y-full" : "translate-y-0"
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-8 ">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex-shrink-0 py-5 font-bold">
               <Link href="/" className="block">
-                {/* <div className="relative w-40 lg:h-20 h-[70px] object-cover">
-                  <Image
-                    src={LOGO}
-                    alt="Company Logo"
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div> */}
                 Get Egypten Guide
               </Link>
             </div>

@@ -4,7 +4,11 @@ import Blogs from "../../../../public/assets/bgblogs.png";
 
 const HeroBlog = () => {
   return (
+<<<<<<< HEAD
     <div className="relative w-full h-[40vh] md:h-[50vh]">
+=======
+    <div className="relative w-full h-[50vh] md:h-[90vh]">
+>>>>>>> a786adf (Initial commit)
       <Image
         src={Blogs}
         alt="Background"

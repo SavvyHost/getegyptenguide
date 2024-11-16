@@ -112,7 +112,7 @@ import React from "react";
 import { Globe, Award, Cpu, Heart, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-import AboutImg from "../../../public/assets/aboutimg.png";
+import AboutImg from "../../../public/assets/download.jpeg";
 import BgAbout from "../../../public/assets/bgabout.png";
 
 const AboutUs = () => {
@@ -207,7 +207,7 @@ const AboutUs = () => {
               <Image
                 src={AboutImg}
                 alt="Travel Journey"
-                className="rounded-lg shadow-xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="rounded-lg shadow-xl w-9/12 transform hover:scale-105 transition-transform duration-500"
               />
             </div>
             <div>

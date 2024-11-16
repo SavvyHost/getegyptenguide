@@ -36,8 +36,8 @@ const HeroOverlay: React.FC<Props> = () => {
           Get Egypten Guide With The Best Locals Ever!
         </h1>
         <p className="text-lg sm:text-xl max-w-3xl capitalize text-accent-white font-bold font-segoe lg:text-2xl text-center mb-8 lg:mb-10">
-          Confused? Want to Get Egypten Guide your dream package? Enquire here in 1
-          min
+          Confused? Want to Get Egypten Guide your dream package? Enquire here
+          in 1 min
         </p>
 
         {/* Buttons Section */}

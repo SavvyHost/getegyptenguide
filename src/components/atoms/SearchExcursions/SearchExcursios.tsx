@@ -1,10 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LocationDropdown from "./LocationDropdown";
 import SearchModal from "./SearchModal";
 import Button from "@mui/material/Button";
 import { Search } from "lucide-react";
 import dayjs from "dayjs";
-import DatePickerInput from "./DataPickerInput"; // Import the new component
+import DatePickerInput from "./DataPickerInput";
+
+// Custom hook for scroll behavior
+const useScrollVisibility = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+
+      // Show header if:
+      // 1. Scrolling up
+      // 2. At the top of the page (within first 10px)
+      // 3. User hasn't scrolled much (less than 50px)
+      setVisible(
+        !isScrollingDown ||
+          currentScrollPos < 10 ||
+          Math.abs(currentScrollPos - prevScrollPos) < 50
+      );
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    // Add throttling to prevent too many updates
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
+  }, [prevScrollPos]);
+
+  return visible;
+};
 
 type DateRange = [Date | null, Date | null];
 
@@ -14,6 +56,7 @@ const SearchExcursions: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null);
   const locations: string[] = ["New York", "London", "Paris", "Tokyo"];
+  const isVisible = useScrollVisibility();
 
   const handleDateChange = (newValue: dayjs.Dayjs | null) => {
     setSelectedDate(newValue);
@@ -22,31 +65,49 @@ const SearchExcursions: React.FC = () => {
     }
   };
 
+  const handleSearchClick = () => {
+    setOpenModal(true);
+    // If header is hidden, scroll to top before opening modal
+    if (!isVisible) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div>
-      {/* Mobile Button */}
-      <Button
-        className="fixed top-[67px] w-full left-0 z-30 sm:hidden bg-white text-gray-400 font-segoe rounded-md  py-4 hover:bg-white"
-        onClick={() => setOpenModal(true)}
+      {/* Mobile Search Button with scroll behavior */}
+      <div
+        className={`fixed left-0 right-0 z-30 sm:hidden transition-all duration-300 ${
+          isVisible ? "top-[63px]" : "top-0"
+        }`}
       >
-        Search For an excursion or activity <Search className="ml-4" />
-      </Button>
+        <Button
+          className="w-full bg-white text-gray-400 font-segoe rounded-md py-4 hover:bg-white shadow-md"
+          onClick={handleSearchClick}
+        >
+          <span className="flex items-center justify-center">
+            Search For an excursion or activity <Search className="ml-4" />
+          </span>
+        </Button>
+      </div>
 
-      {/* Full Search Component for larger screens, hidden on mobile */}
+      {/* Desktop Search Component */}
       <div className="relative hidden sm:flex flex-col sm:flex-row items-center bg-white rounded-md mt-5 border border-gray-100 p-5 space-y-2 sm:space-y-0 sm:space-x-2 mx-auto max-w-2xl w-full">
         <LocationDropdown
           location={location}
           setLocation={setLocation}
           locations={locations}
         />
-        <div className="w-px bg-gray-300 h-8 hidden sm:block"></div>
+        <div className="w-px bg-gray-300 h-8 hidden sm:block" />
 
-        {/* Use the DatePickerInput component here */}
         <DatePickerInput
           selectedDate={selectedDate}
           onDateChange={handleDateChange}
-          mobileWidth="100%" // Full width on mobile
-          laptopWidth="40%" // Fixed width on laptop
+          mobileWidth="100%"
+          laptopWidth="40%"
           height="40px"
           labelProps={{
             fontSize: "14px",
