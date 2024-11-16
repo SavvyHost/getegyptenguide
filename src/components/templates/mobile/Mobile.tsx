@@ -6,7 +6,7 @@ import TravelPackagePage from "@/components/molecules/TravelCardSearch/TravelCar
 import { ToursData } from "@/types/tour";
 import MobileSidebar from "@/components/atoms/Filters/MobileSidebar";
 import Explore from "@/components/molecules/ExploreTours";
-import { SlidersHorizontal } from "lucide-react";
+import { Filter, SlidersHorizontal } from "lucide-react";
 
 interface MobileProps {
   toursData: ToursData;
@@ -121,9 +121,7 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
           </div>
         </div>
       </div>
-      <div
-        className={`transition-all duration-300 ${visible ? "mt-36" : "mt-24"}`}
-      >
+      <div className="mt-36">
         <Explore />
       </div>
       <div className="flex-1">
