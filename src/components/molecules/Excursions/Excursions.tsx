@@ -86,7 +86,7 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
             {title}
           </h2>
 
-          <div className="space-y-3 flex-col justify-between text-sm text-primary-dark mb-4">
+          <div className="flex flex-row items-center text-sm text-primary-dark mb-4 gap-3">
             <div className="flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-primary-dark" />
               <span>{duration} Hours</span>

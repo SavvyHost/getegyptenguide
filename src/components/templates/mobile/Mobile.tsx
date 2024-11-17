@@ -5,7 +5,7 @@ import MobileSearchModal from "@/components/atoms/Search/MobileSearchModal";
 import TravelPackagePage from "@/components/molecules/TravelCardSearch/TravelCardSearch";
 import { ToursData } from "@/types/tour";
 import MobileSidebar from "@/components/atoms/Filters/MobileSidebar";
-import Explore from "@/components/molecules/ExploreTours";
+import Explore from "@/components/molecules/ExploreExcursios";
 import { Filter, SlidersHorizontal } from "lucide-react";
 
 interface MobileProps {
@@ -121,7 +121,7 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
           </div>
         </div>
       </div>
-      <div className="mt-36">
+      <div className="mt-36 px-3">
         <Explore />
       </div>
       <div className="flex-1">
