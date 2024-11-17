@@ -33,10 +33,10 @@ const HeroOverlay: React.FC<Props> = () => {
     <div>
       <div className="absolute inset-0 flex flex-col justify-center items-center mt-20 p-4">
         <h1 className="text-2xl max-w-4xl sm:text-3xl capitalize text-accent-white font-bold lg:text-6xl font-segoe text-center mb-4 lg:mb-6">
-          Egypt Rasain Tours With The Best Locals Ever!
+          Get Egypten Guide With The Best Locals Ever!
         </h1>
         <p className="text-lg sm:text-xl max-w-3xl capitalize text-accent-white font-bold font-segoe lg:text-2xl text-center mb-8 lg:mb-10">
-          Confused? Want to Egypt Raisen your dream package? Enquire here in 1
+          Confused? Want to Get Egypten Guide your dream package? Enquire here in 1
           min
         </p>
 
