@@ -1,17 +1,46 @@
-import React, { useState } from "react";
-
+// Mobile.tsx
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import MobileSearchModal from "@/components/atoms/Search/MobileSearchModal";
 import TravelPackagePage from "@/components/molecules/TravelCardSearch/TravelCardSearch";
 import { ToursData } from "@/types/tour";
 import MobileSidebar from "@/components/atoms/Filters/MobileSidebar";
-import Explore from "@/components/molecules/ExploreExcursios";
-import { Filter, SlidersHorizontal } from "lucide-react";
+import Explore from "@/components/molecules/ExploreTours";
+import { SlidersHorizontal } from "lucide-react";
 
 interface MobileProps {
   toursData: ToursData;
 }
 
+const useScrollHeader = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const isScrollingDown = prevScrollPos < currentScrollPos;
+      const isTopPackagesPage = router.pathname === "/top-packages";
+
+      if (isTopPackagesPage) {
+        setVisible(!isScrollingDown || currentScrollPos < 5);
+      } else {
+        setVisible(true);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, router.pathname]);
+
+  return { visible };
+};
+
 const Mobile: React.FC<MobileProps> = ({ toursData }) => {
+  const { visible } = useScrollHeader();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // State management for filters
@@ -20,13 +49,13 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
     useState<string>("Spain");
   const [selectedStarRating, setSelectedStarRating] = useState<string[]>([
     "5 stars",
-  ]); // Changed to an array for multiple selections
+  ]);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([
     "Restaurant",
   ]);
   const [selectedAccommodationType, setSelectedAccommodationType] = useState<
     string[]
-  >(["Hotel"]); // Changed to an array for multiple selections
+  >(["Hotel"]);
 
   // Handle price change
   const handlePriceChange = (event: Event, newValue: number | number[]) => {
@@ -46,7 +75,6 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
 
   // Apply filters function
   const handleApplyFilters = () => {
-    // Implement your filter application logic here
     console.log("Filters applied:", {
       price,
       selectedDestination,
@@ -57,16 +85,20 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
   };
 
   return (
-    <div className="bg-[#FAFAFA]  flex flex-col">
-      <div className="fixed top-0 left-0 right-0 bg-[#FAFAFA] p-2 z-10 ">
-        <div className="mt-[70px] flex justify-center items-center gap-3 w-full">
+    <div className="bg-[#FAFAFA] flex flex-col">
+      <div
+        className={`fixed left-0 right-0 bg-[#FAFAFA] p-3 z-30 transition-all duration-300 ${
+          visible ? "top-[70px]" : "top-0"
+        }`}
+      >
+        <div className="flex justify-center items-center gap-3 w-full">
           <div className="w-full">
             <MobileSearchModal />
           </div>
-          <div className="">
+          <div>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="bg-[#4CAF50] text-nowrap py-4 px-6 text-white rounded-md"
+              className="bg-[#4CAF50] text-nowrap py-3 px-5 text-white rounded-md"
             >
               <SlidersHorizontal />
             </button>
@@ -80,7 +112,7 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
               selectedAccommodationType={selectedAccommodationType}
               handlePriceChange={handlePriceChange}
               handleClearFilters={handleClearFilters}
-              handleApplyFilters={handleApplyFilters} // Pass the function here
+              handleApplyFilters={handleApplyFilters}
               setSelectedDestination={setSelectedDestination}
               setSelectedStarRating={setSelectedStarRating}
               setSelectedAmenities={setSelectedAmenities}
@@ -89,12 +121,14 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
           </div>
         </div>
       </div>
-      <div className="mt-36 px-3">
+      <div
+        className={`transition-all duration-300 ${visible ? "mt-36" : "mt-24"}`}
+      >
         <Explore />
       </div>
       <div className="flex-1">
         <div className="px-3">
-          <div className="flex flex-col md:flex-row gap-8 ">
+          <div className="flex flex-col md:flex-row gap-8">
             <div className="w-full md:w-3/4">
               <TravelPackagePage toursData={toursData} />
             </div>
