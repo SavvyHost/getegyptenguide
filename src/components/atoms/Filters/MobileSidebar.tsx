@@ -75,14 +75,14 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
             onClick={() => setIsModalOpen(false)}
             className="absolute top-2 right-4"
           >
-            <CloseIcon fontSize="large" className="text-green-600" />
+            <CloseIcon fontSize="large" className="text-primary-dark" />
           </IconButton>
 
           {/* Filters Header */}
           <div className="flex justify-start gap-x-3 items-center mb-4">
             <h2 className="text-xl font-segoe">Applied filters</h2>
             <Button
-              className="text-green-600 hover:text-green-500 font-segoe"
+              className="text-primary-dark hover:text-green-500 font-segoe"
               onClick={handleClearFilters}
             >
               Clear All
@@ -105,9 +105,9 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                         checked={selectedDestination === country}
                         onChange={() => setSelectedDestination(country)}
                         sx={{
-                          color: "#4CAF50",
+                          color: "#1A2B49",
                           "&.Mui-checked": {
-                            color: "#4CAF50",
+                            color: "#1A2B49",
                           },
                         }}
                       />
@@ -128,12 +128,12 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                   min={0}
                   max={1000}
                   sx={{
-                    color: "#4CAF50",
+                    color: "#1A2B49",
                     "& .MuiSlider-thumb": {
-                      backgroundColor: "#4CAF50",
+                      backgroundColor: "#1A2B49",
                     },
                     "& .MuiSlider-rail": {
-                      backgroundColor: "#4CAF50",
+                      backgroundColor: "#1A2B49",
                     },
                   }}
                 />
@@ -162,9 +162,9 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                     <Checkbox
                       checked={selectedStarRating.includes(rating)}
                       sx={{
-                        color: "#4CAF50",
+                        color: "#1A2B49",
                         "&.Mui-checked": {
-                          color: "#4CAF50",
+                          color: "#1A2B49",
                         },
                       }}
                     />
@@ -192,9 +192,9 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                     <Checkbox
                       checked={selectedAmenities.includes(amenity)}
                       sx={{
-                        color: "#4CAF50",
+                        color: "#1A2B49",
                         "&.Mui-checked": {
-                          color: "#4CAF50",
+                          color: "#1A2B49",
                         },
                       }}
                     />
@@ -222,9 +222,9 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                     <Checkbox
                       checked={selectedAccommodationType.includes(type)}
                       sx={{
-                        color: "#4CAF50",
+                        color: "#1A2B49",
                         "&.Mui-checked": {
-                          color: "#4CAF50",
+                          color: "#1A2B49",
                         },
                       }}
                     />
@@ -242,7 +242,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
                 handleApplyFilters();
                 setIsModalOpen(false);
               }}
-              className="bg-green-800 p-3 text-white rounded-md w-full"
+              className="bg-primary-light p-3 text-white rounded-md w-full"
             >
               Apply Filters
             </button>

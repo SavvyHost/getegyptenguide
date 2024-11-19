@@ -35,13 +35,13 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
       href={`/top-excursions/${id}`}
       className="block group transition-transform"
     >
-      <div className="bg-accent-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div className="bg-accent-white rounded-none border-gray-300 border overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
         <div className="relative aspect-[4/3] w-full overflow-hidden">
           <Image
             src={image}
             alt={title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-300 group-hover:scale-110"
           />
           <div className="absolute top-3 left-3">
             <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-primary-light text-accent-white">
@@ -82,7 +82,7 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
             <span className="truncate">{destination}</span>
           </div>
 
-          <h2 className="font-medium text-base sm:text-lg mb-3 line-clamp-2 group-hover:underline group-hover:text-primary-light transition-colors">
+          <h2 className="font-medium text-base sm:text-lg mb-3 line-clamp-2 transition-colors">
             {title}
           </h2>
 

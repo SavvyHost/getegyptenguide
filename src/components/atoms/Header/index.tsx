@@ -98,87 +98,96 @@ export const Header: React.FC<HeaderProps> = ({ header, className }) => {
     { href: "/blogs", label: "Blogs" },
   ];
 
-  return (
-    <>
-      <header
-        className={`fixed top-0 w-full z-40 bg-accent-white shadow-md transition-transform duration-300 ${
-          !visible ? "-translate-y-full" : "translate-y-0"
-        }`}
-      >
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex-shrink-0 py-5 font-bold">
-              <Link href="/" className="block">
-                Get Egypten Guide
-              </Link>
-            </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex justify-center flex-grow px-8">
-              <DesktopMenu navLinks={navLinks} />
-            </div>
+   useEffect(() => {
+     console.group("Wishlist Count Debug");
+     console.log("Current Wishlist Count:", wishlistCount);
+     console.groupEnd();
+   }, [wishlistCount]);
 
-            {/* Right side items */}
-            <div className="flex items-center space-x-4">
-              {/* Language Selector */}
-              <div className="hidden lg:flex items-center space-x-2">
-                <button
-                  className="focus:outline-none hover:text-gray-900 transition-colors"
-                  onClick={handleLanguageChange}
-                  title="Change Language"
-                >
-                  <Globe className="w-5 h-5 text-primary-dark" />
-                </button>
-                <span className="text-primary-dark text-sm font-medium">
-                  EN
-                </span>
-              </div>
+   return (
+     <>
+       <header
+         className={`fixed top-0 w-full z-40 bg-accent-white shadow-md transition-transform duration-300 ${
+           !visible ? "-translate-y-full" : "translate-y-0"
+         }`}
+       >
+         <div className="container mx-auto px-4 lg:px-8">
+           <div className="flex items-center justify-between">
+             {/* Logo */}
+             <div className="flex-shrink-0 py-5 font-bold">
+               <Link href="/" className="block">
+                 Get Egypten Guide
+               </Link>
+             </div>
 
-              {/* Wishlist Button */}
-              <button
-                onClick={handleWishlistClick}
-                className="relative text-gray-600 hover:text-gray-900 transition-colors"
-                aria-label={`View wishlist containing ${wishlistCount} items`}
-              >
-                <Heart className="w-5 h-5" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-accent-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {wishlistCount}
-                  </span>
-                )}
-              </button>
+             {/* Desktop Menu */}
+             <div className="hidden lg:flex justify-center flex-grow px-8">
+               <DesktopMenu navLinks={navLinks} />
+             </div>
 
-              {/* Tailored Made Button */}
-              <Link
-                href="/inquire"
-                className="lg:flex hidden items-center text-primary-dark border border-primary-dark px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary-light hover:text-accent-white hover:border-primary-light transition-colors duration-200"
-              >
-                Tailored Made
-              </Link>
+             {/* Right side items */}
+             <div className="flex items-center space-x-4">
+               {/* Language Selector */}
+               <div className="hidden lg:flex items-center space-x-2">
+                 <button
+                   className="focus:outline-none hover:text-gray-900 transition-colors"
+                   onClick={handleLanguageChange}
+                   title="Change Language"
+                 >
+                   <Globe className="w-5 h-5 text-primary-dark" />
+                 </button>
+                 <span className="text-primary-dark text-sm font-medium">
+                   EN
+                 </span>
+               </div>
 
-              {/* Mobile Menu Toggle */}
-              <button
-                className="lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
-                onClick={() => setIsMenuOpen(true)}
-                aria-label="Toggle mobile menu"
-              >
-                <Menu className="w-6 h-6 text-primary-dark hover:text-primary-light" />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+               <button
+                 onClick={handleWishlistClick}
+                 className="relative text-gray-600 hover:text-gray-900 transition-colors"
+                 aria-label={`View wishlist containing ${wishlistCount} items`}
+               >
+                 <Heart className="w-5 h-5" />
+                 {wishlistCount > 0 && (
+                   <span
+                     className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                     data-testid="wishlist-count"
+                   >
+                     {wishlistCount}
+                   </span>
+                 )}
+               </button>
 
-      {/* Mobile Menu */}
-      <MobileMenu
-        isOpen={isMenuOpen}
-        onClose={() => setIsMenuOpen(false)}
-        navLinks={navLinks}
-        onLanguageChange={handleLanguageChange}
-      />
-    </>
-  );
+               {/* Tailored Made Button */}
+               <Link
+                 href="/inquire"
+                 className="lg:flex hidden items-center text-primary-dark border border-primary-dark px-4 py-2 rounded-md text-sm font-semibold hover:bg-primary-light hover:text-accent-white hover:border-primary-light transition-colors duration-200"
+               >
+                 Tailored Made
+               </Link>
+
+               {/* Mobile Menu Toggle */}
+               <button
+                 className="lg:hidden text-gray-600 hover:text-gray-900 focus:outline-none"
+                 onClick={() => setIsMenuOpen(true)}
+                 aria-label="Toggle mobile menu"
+               >
+                 <Menu className="w-6 h-6 text-primary-dark hover:text-primary-light" />
+               </button>
+             </div>
+           </div>
+         </div>
+       </header>
+
+       {/* Mobile Menu */}
+       <MobileMenu
+         isOpen={isMenuOpen}
+         onClose={() => setIsMenuOpen(false)}
+         navLinks={navLinks}
+         onLanguageChange={handleLanguageChange}
+       />
+     </>
+   );
 };
 
 export default Header;

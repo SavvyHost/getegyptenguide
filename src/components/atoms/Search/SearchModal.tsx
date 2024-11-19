@@ -35,7 +35,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
           <h2 className="text-lg font-semibold">Search</h2>
           <button
             onClick={() => setIsModalOpen(false)}
-            className="text-green-500"
+            className="text-primary-light"
           >
             <AiOutlineClose className="w-6 h-6" />
           </button>
@@ -122,7 +122,7 @@ const SearchModal: React.FC<SearchModalProps> = ({
 
           <Filter />
           <button
-            className="bg-green-800 text-white font-segoe rounded-md px-4 mt-4 py-2 w-full flex items-center justify-center"
+            className="bg-primary-dark text-white font-segoe rounded-md px-4 mt-4 py-2 w-full flex items-center justify-center"
             onClick={() => setIsModalOpen(false)}
           >
             <Search className="mr-2 w-5 h-5" />

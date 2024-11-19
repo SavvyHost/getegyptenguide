@@ -41,7 +41,7 @@ export default function BookingFormDesktop({
           className={`p-2 rounded-none border transition-colors duration-200 flex items-center gap-2 ${
             isInWishlist(DetailTour.id)
               ? "bg-primary-light text-accent-white hover:bg-primary-dark"
-              : "bg-white text-primary-light hover:bg-gray-100 border-primary-dark"
+              : "bg-white text-primary-light hover:bg-gray-100 border-accent-yellow"
           }`}
         >
           {isInWishlist(DetailTour.id) ? (

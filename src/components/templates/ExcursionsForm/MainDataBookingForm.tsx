@@ -172,7 +172,7 @@ const MainDataBookingForm = ({
                           onClick={() =>
                             setFieldValue(name, Math.max(min, values[name] - 1))
                           }
-                          className="p-2 bg-gray-100 text-green-600 rounded-full flex items-center justify-center focus:outline-none hover:bg-green-200 transition-colors"
+                          className="p-2 bg-gray-100 text-primary-dark rounded-full flex items-center justify-center focus:outline-none hover:bg-primary-light transition-colors"
                         >
                           <Minus size={16} />
                         </button>
@@ -182,7 +182,7 @@ const MainDataBookingForm = ({
                           onClick={() =>
                             setFieldValue(name, Math.min(max, values[name] + 1))
                           }
-                          className="p-2 bg-gray-100 text-green-600 rounded-full flex items-center justify-center focus:outline-none hover:bg-green-200 transition-colors"
+                          className="p-2 bg-gray-100 text-primary-dark rounded-full flex items-center justify-center focus:outline-none hover:bg-primary-light transition-colors"
                         >
                           <Plus size={16} />
                         </button>
@@ -196,7 +196,7 @@ const MainDataBookingForm = ({
                         calculateTotalPrice(values);
                       }}
                       type="button"
-                      className="w-full p-3 bg-green-700 text-white rounded-md hover:bg-green-900 transition duration-150"
+                      className="w-full p-3 bg-primary-dark text-white rounded-md hover:bg-accent-yellow transition duration-150"
                     >
                       Apply
                     </button>

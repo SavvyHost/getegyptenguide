@@ -19,8 +19,26 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
   const [wishlist, setWishlist] = useState<AttractionCardProps[]>([]);
 
   useEffect(() => {
-    loadWishlist();
-  }, []);
+    // Extensive logging for debugging
+    console.group("Wishlist Context Debug");
+    console.log("Wishlist Items:", wishlist);
+    console.log("Wishlist Count:", wishlist.length);
+
+    // Try to load from localStorage and log details
+    try {
+      const savedWishlist = localStorage.getItem("wishlist");
+      console.log("Saved Wishlist (localStorage):", savedWishlist);
+
+      if (savedWishlist) {
+        const parsed = JSON.parse(savedWishlist);
+        console.log("Parsed Wishlist:", parsed);
+      }
+    } catch (error) {
+      console.error("Error reading localStorage:", error);
+    }
+
+    console.groupEnd();
+  }, [wishlist]);
 
   const loadWishlist = () => {
     if (typeof window !== "undefined") {
@@ -28,7 +46,16 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
         const savedWishlist = localStorage.getItem("wishlist");
         if (savedWishlist) {
           const parsed = JSON.parse(savedWishlist);
-          if (Array.isArray(parsed)) {
+          if (
+            Array.isArray(parsed) &&
+            parsed.every(
+              (item) =>
+                typeof item === "object" &&
+                item !== null &&
+                "id" in item &&
+                typeof item.id === "number"
+            )
+          ) {
             setWishlist(parsed);
           } else {
             throw new Error("Invalid wishlist format");
@@ -42,6 +69,10 @@ export const WishlistProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     }
   };
+
+  useEffect(() => {
+    loadWishlist();
+  }, []);
 
   const saveWishlist = (newWishlist: AttractionCardProps[]) => {
     if (typeof window !== "undefined") {

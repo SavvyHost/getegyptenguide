@@ -1,12 +1,14 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FaStar, FaRegStar, FaHeart, FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { AttractionCardProps } from "@/types/attraction";
 
 const AttractionCard: React.FC<
-  AttractionCardProps & { onRemove?: () => void }
+  AttractionCardProps & {
+    isEditMode?: boolean;
+  }
 > = ({
   id,
   type,
@@ -24,7 +26,7 @@ const AttractionCard: React.FC<
   min_price,
   main_image,
   destination,
-  onRemove,
+  isEditMode = false,
 }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
   const router = useRouter();
@@ -36,7 +38,7 @@ const AttractionCard: React.FC<
   };
 
   const handleMouseUp = (e: React.MouseEvent) => {
-    if (startPos.current) {
+    if (startPos.current && !isEditMode) {
       const dx = Math.abs(e.clientX - startPos.current.x);
       const dy = Math.abs(e.clientY - startPos.current.y);
 
@@ -80,11 +82,6 @@ const AttractionCard: React.FC<
     };
 
     toggleWishlist(attraction);
-
-    // Check if the onRemove callback is provided
-    if (onRemove && isInWishlist(id)) {
-      onRemove();
-    }
   };
 
   return (
@@ -92,7 +89,9 @@ const AttractionCard: React.FC<
       ref={cardRef}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
-      className="group h-full flex flex-col mb-3 bg-accent-white rounded-none shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden cursor-pointer"
+      className={`group h-full flex flex-col mb-3 border border-gray-300 rounded-none bg-accent-white transition-shadow duration-300 overflow-hidden ${
+        !isEditMode ? "cursor-pointer" : ""
+      }`}
     >
       <div className="relative">
         {(isFeatured || isOnSale) && (
@@ -105,21 +104,23 @@ const AttractionCard: React.FC<
           </div>
         )}
 
-        <div className="absolute top-4 right-4 z-10">
-          <button
-            onClick={handleWishlistClick}
-            className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors duration-200"
-            aria-label={
-              isInWishlist(id) ? "Remove from wishlist" : "Add to wishlist"
-            }
-          >
-            {isInWishlist(id) ? (
-              <FaHeart className="text-red-500 w-6 h-6" />
-            ) : (
-              <FaRegHeart className="text-gray-600 w-6 h-6" />
-            )}
-          </button>
-        </div>
+        {!isEditMode && (
+          <div className="absolute top-4 right-4 z-10">
+            <button
+              onClick={handleWishlistClick}
+              className="p-2 rounded-full bg-white/80 hover:bg-white transition-colors duration-200"
+              aria-label={
+                isInWishlist(id) ? "Remove from wishlist" : "Add to wishlist"
+              }
+            >
+              {isInWishlist(id) ? (
+                <FaHeart className="text-red-500 w-6 h-6" />
+              ) : (
+                <FaRegHeart className="text-gray-600 w-6 h-6" />
+              )}
+            </button>
+          </div>
+        )}
 
         <div className="relative h-48 w-full overflow-hidden">
           <Image
@@ -140,22 +141,10 @@ const AttractionCard: React.FC<
           <p className="text-gray-600 mb-2 truncate text-sm">{location}</p>
         )}
 
-        {/* Add ratings if required */}
-        {/* <div className="flex items-center mb-2">
-          {Array.from({ length: 5 }, (_, index) =>
-            index < 2 ? (
-              <FaStar key={index} className="text-accent-yellow" />
-            ) : (
-              <FaRegStar key={index} className="text-gray-300" />
-            )
-          )}
-        </div> */}
-
         <div className="text-sm text-gray-600 mb-1">
           <p>
             Duration: {duration} {type === "tour_package" ? "days" : "hours"}
           </p>
-          {/* <p>Age Range: {ageRange || age_range}</p> */}
         </div>
 
         <div className="text-sm text-gray-600 mb-1">
@@ -164,7 +153,6 @@ const AttractionCard: React.FC<
               Location: {destination}
             </p>
           )}
-          {/* {run && <p className="text-sm text-gray-600 mb-1">Run: {run}</p>} */}
         </div>
 
         <p className="text-lg font-bold text-primary-light mt-auto">

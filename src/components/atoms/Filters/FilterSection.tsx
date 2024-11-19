@@ -22,9 +22,9 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       >
         {title}
         {isOpen ? (
-          <ChevronUp size={20} color="yellow" />
+          <ChevronUp size={20} color="#FF5533" />
         ) : (
-          <ChevronDown size={20} color="yellow" />
+          <ChevronDown size={20} color="#FF5533" />
         )}
       </button>
 

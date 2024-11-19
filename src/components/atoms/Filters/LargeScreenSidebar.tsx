@@ -37,7 +37,7 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-segoe">Applied filters</h2>
         <Button
-          className="text-green-600 hover:text-green-500 font-segoe"
+          className="text-primary-dark hover:text-primary-dark font-segoe"
           onClick={handleClearFilters}
         >
           Clear All
@@ -57,9 +57,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                 checked={selectedDestination === country}
                 // Prevent div click when clicking on radio
                 sx={{
-                  color: "green",
+                  color: "#1A2B49",
                   "&.Mui-checked": {
-                    color: "green",
+                    color: "#1A2B49",
                   },
                 }}
               />
@@ -79,12 +79,12 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
             min={0}
             max={1000}
             sx={{
-              color: "green",
+              color: "#1A2B49",
               "& .MuiSlider-thumb": {
-                backgroundColor: "green",
+                backgroundColor: "#1A2B49",
               },
               "& .MuiSlider-rail": {
-                backgroundColor: "green",
+                backgroundColor: "#1A2B49",
               },
             }}
           />
@@ -115,9 +115,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                   checked={selectedAmenities.includes(rating)}
                   // Prevent div click when clicking on checkbox
                   sx={{
-                    color: "green",
+                    color: "#1A2B49",
                     "&.Mui-checked": {
-                      color: "green",
+                      color: "#1A2B49",
                     },
                   }}
                 />
@@ -153,9 +153,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                 checked={selectedAmenities.includes(amenity)}
                 // Prevent div click when clicking on checkbox
                 sx={{
-                  color: "green",
+                  color: "#1A2B49",
                   "&.Mui-checked": {
-                    color: "green",
+                    color: "#1A2B49",
                   },
                 }}
               />
@@ -179,9 +179,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                   checked={selectedAccommodationType === type}
                   // Prevent div click when clicking on checkbox
                   sx={{
-                    color: "green",
+                    color: "#1A2B49",
                     "&.Mui-checked": {
-                      color: "green",
+                      color: "#1A2B49",
                     },
                   }}
                 />
