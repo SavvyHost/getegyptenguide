@@ -1,5 +1,6 @@
-import Layout from "@/components/organisms/Layout";
+import { RecentlyViewedProvider } from "@/contexts/recently-viewed-context";
 import { WishlistProvider } from "@/contexts/wishlist-context";
+import Layout from "@/components/organisms/Layout";
 import "@/styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import { AppCacheProvider } from "@mui/material-nextjs/v13-pagesRouter";
@@ -7,7 +8,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import { ToastContainer } from "react-toastify";
-import FullPageLoader from "@/components/atoms/LoadingIndicator";
 
 const theme = createTheme({
   typography: {
@@ -29,15 +29,26 @@ export default function App(props: AppProps) {
       <AppCacheProvider {...props}>
         <ThemeProvider theme={theme}>
           <WishlistProvider>
-            <Layout>
-              <FullPageLoader>
+            <RecentlyViewedProvider>
+              <Layout>
                 <Component {...pageProps} />
-              </FullPageLoader>
-            </Layout>
+              </Layout>
+            </RecentlyViewedProvider>
           </WishlistProvider>
         </ThemeProvider>
       </AppCacheProvider>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </QueryClientProvider>
   );
 }

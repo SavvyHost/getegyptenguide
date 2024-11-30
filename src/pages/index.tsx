@@ -15,6 +15,7 @@ import { TourPackage, ToursData } from "@/types/tour";
 import { Destination } from "./blogs";
 import { Attraction } from "@/types/tour"; // Create a type for attraction
 import BlogSection from "@/components/organisms/BlogSection";
+import RecentlyViewedSection from "@/components/templates/RecentlyViewedSection";
 
 type Blog = {
   id: number;
@@ -75,6 +76,9 @@ export default function Home({
       </div>
       <div className="lg:px-16 p-4  ">
         <BlogSection blogData={blogData} />
+      </div>
+      <div className="lg:px-16 p-4 bg-[#FAFAFA] ">
+        <RecentlyViewedSection />
       </div>
     </>
   );

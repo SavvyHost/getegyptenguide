@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Clock, Heart, Luggage, MapPin } from "lucide-react";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { useRecentlyViewed } from "@/contexts/recently-viewed-context";
 
 interface ExcursionCardProps {
   id: number;
@@ -30,8 +31,25 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
 }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
 
+  const { addToRecentlyViewed } = useRecentlyViewed(); // Use recently viewed context
+
+  const handleViewTour = () => {
+    addToRecentlyViewed({
+      id,
+      title,
+      location,
+      price,
+      image,
+      rating,
+      duration,
+      ageRange,
+      destination,
+    });
+  };
+
   return (
     <Link
+      onClick={handleViewTour} // Add to recently viewed when clicked
       href={`/top-excursions/${id}`}
       className="block group transition-transform"
     >
@@ -86,7 +104,7 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
             {title}
           </h2>
 
-          <div className="flex flex-row items-center text-sm text-primary-dark mb-4 gap-3">
+          <div className="flex justify-start items-center gap-4 text-sm text-primary-dark mb-4">
             <div className="flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-primary-dark" />
               <span>{duration} Hours</span>
