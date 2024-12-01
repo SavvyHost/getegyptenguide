@@ -82,7 +82,7 @@ const TourDetails: React.FC<ImageGalleryProps> = ({ DetailTour }) => {
               className={`p-3 rounded-md shadow-md border transition-all duration-200 ${
                 isInWishlist(DetailTour.id)
                   ? "bg-primary-light text-accent-white hover:bg-primary-dark"
-                  : "bg-gray-100 text-green-700 border-green-700 hover:bg-gray-200"
+                  : "bg-gray-100 text-accent-yellow border-primary-light hover:bg-gray-200"
               }`}
             >
               <Heart

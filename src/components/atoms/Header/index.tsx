@@ -92,6 +92,7 @@ export const Header: React.FC<HeaderProps> = ({ header, className }) => {
 
   const navLinks: NavLink[] = [
     { href: "/", label: "Home" },
+    { href: "/hotels", label: "Hotels" },
     { href: "/top-packages", label: "Tour Packages" },
     { href: "/top-excursions", label: "Short Excursions" },
     { href: "/nile-cruises", label: "Nile Cruises" },
