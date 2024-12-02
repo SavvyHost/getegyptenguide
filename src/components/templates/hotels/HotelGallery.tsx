@@ -28,7 +28,7 @@ export default function HotelGallery({ images }: HotelGalleryProps) {
 
   return (
     <div className="grid grid-cols-4 gap-2 mb-8">
-      {images.slice(0, 8).map((image, index) => (
+      {images.slice(0, 5).map((image, index) => (
         <a
           key={image.id}
           data-fancybox="gallery"

@@ -57,6 +57,26 @@ export const hotels: Hotel[] = [
         url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         alt: "Spa",
       },
+      {
+        id: 6,
+        url: "https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Hotel Room",
+      },
+      {
+        id: 7,
+        url: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Restaurant",
+      },
+      {
+        id: 8,
+        url: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Pool",
+      },
+      {
+        id: 9,
+        url: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        alt: "Spa",
+      },
     ],
     reviews: [
       {
