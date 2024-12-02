@@ -4,8 +4,11 @@ import "react-phone-number-input/style.css";
 import MainDataBookingForm from "./MainDataBookingForm";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+<<<<<<< HEAD
 import { Heart } from "lucide-react";
 import ShareButton from "@/components/templates/ShareButton";
+=======
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 
 type BookingFormDesktopProps = {
   DetailTour: {
@@ -38,6 +41,7 @@ export default function BookingFormDesktop({
     <div className="hidden md:block p-2">
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-sm text-gray-500">From ${DetailTour?.min_price}</h2>
+<<<<<<< HEAD
         <div className="flex gap-2">
           <ShareButton
             url={typeof window !== "undefined" ? window.location.href : ""}
@@ -61,6 +65,28 @@ export default function BookingFormDesktop({
             />
           </button>
         </div>
+=======
+        <button
+          onClick={(e) => handleWishlistClick(e, DetailTour)}
+          className={`p-2 rounded-none border transition-colors duration-200 flex items-center gap-2 ${
+            isInWishlist(DetailTour.id)
+              ? "bg-primary-light text-accent-white hover:bg-primary-dark"
+              : "bg-white text-primary-light hover:bg-gray-100 border-primary-dark"
+          }`}
+        >
+          {isInWishlist(DetailTour.id) ? (
+            <>
+              Added to Wishlist
+              <FaHeart className="w-4 h-4" />
+            </>
+          ) : (
+            <>
+              Add to Wishlist
+              <FaRegHeart className="w-4 h-4" />
+            </>
+          )}
+        </button>
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
       </div>
 
       <h1 className="text-2xl font-bold mb-4 text-gray-800">

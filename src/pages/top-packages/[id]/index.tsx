@@ -38,7 +38,11 @@ const TourDetails: React.FC<ImageGalleryProps> = ({ DetailTour }) => {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="flex flex-col md:flex-row bg-white md:pt-5 md:px-16 mt-4">
+=======
+      <div className="flex flex-col md:flex-row bg-white md:pt-5 md:px-16">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         <div className="w-full md:w-1/3 p-2 lg:px-0 pt-12 md:pt-20 order-1 md:order-2">
           <BookingFormModal DetailTour={DetailTour} />
           <BookingFormDesktop DetailTour={DetailTour} />
@@ -82,7 +86,11 @@ const TourDetails: React.FC<ImageGalleryProps> = ({ DetailTour }) => {
               className={`p-3 rounded-md shadow-md border transition-all duration-200 ${
                 isInWishlist(DetailTour.id)
                   ? "bg-primary-light text-accent-white hover:bg-primary-dark"
+<<<<<<< HEAD
                   : "bg-gray-100 text-accent-yellow border-primary-light hover:bg-gray-200"
+=======
+                  : "bg-gray-100 text-green-700 border-green-700 hover:bg-gray-200"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
               }`}
             >
               <Heart

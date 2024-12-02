@@ -1,18 +1,26 @@
+<<<<<<< HEAD
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
+=======
+import React from "react";
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 import Excursions from "@/components/molecules/Excursions/Excursions";
 import fetchData from "@/helper/FetchData";
 import { TourPackage } from "@/types/tour";
 import SearchExcursions from "@/components/atoms/SearchExcursions/SearchExcursios";
 import Explore from "@/components/molecules/ExploreExcursios";
 import Drops from "@/components/atoms/drops";
+<<<<<<< HEAD
 import { useScroll } from "@/hooks/useScroll";
+=======
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 
 interface HomeProps {
   toursData: TourPackage[];
 }
 
+<<<<<<< HEAD
 const ITEMS_PER_PAGE = 8;
 
 const Home: React.FC<HomeProps> = ({ toursData }) => {
@@ -73,6 +81,15 @@ const Home: React.FC<HomeProps> = ({ toursData }) => {
         <SearchExcursions />
       </div>
       <div className="mt-2">
+=======
+const Home: React.FC<HomeProps> = ({ toursData }) => {
+  return (
+    <div className="lg:px-16 p-2">
+      <div className="mt-28">
+        <SearchExcursions />
+      </div>
+      <div className="">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         <Explore />
       </div>
       <div className="lg:my-6 my-0">
@@ -83,7 +100,11 @@ const Home: React.FC<HomeProps> = ({ toursData }) => {
           Tours and Tickets
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-2 lg:p-0">
+<<<<<<< HEAD
           {displayedTours.map((tour) => (
+=======
+          {toursData.map((tour) => (
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
             <Excursions
               key={tour.id}
               id={tour.id}
@@ -98,11 +119,14 @@ const Home: React.FC<HomeProps> = ({ toursData }) => {
             />
           ))}
         </div>
+<<<<<<< HEAD
         {isLoading && (
           <div className="flex justify-center mt-6">
             <div className="w-10 h-10 border-4 border-green-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         )}
+=======
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
       </div>
     </div>
   );
@@ -112,9 +136,16 @@ export default Home;
 
 export async function getServerSideProps() {
   const data = await fetchData("tours?type=excursion");
+<<<<<<< HEAD
   return {
     props: {
       toursData: data.data as TourPackage[],
+=======
+
+  return {
+    props: {
+      toursData: data.data as TourPackage[], // Ensure this matches the type
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
     },
   };
 }

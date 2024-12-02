@@ -4,7 +4,10 @@ import Link from "next/link";
 import { Clock, Heart, Luggage, MapPin } from "lucide-react";
 import { useWishlist } from "@/contexts/wishlist-context";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+<<<<<<< HEAD
 import { useRecentlyViewed } from "@/contexts/recently-viewed-context";
+=======
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 
 interface ExcursionCardProps {
   id: number;
@@ -31,6 +34,7 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
 }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
 
+<<<<<<< HEAD
   const { addToRecentlyViewed } = useRecentlyViewed(); // Use recently viewed context
 
   const handleViewTour = () => {
@@ -54,12 +58,24 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
       className="block group transition-transform"
     >
       <div className="bg-accent-white rounded-none border-gray-300 border overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+=======
+  return (
+    <Link
+      href={`/top-excursions/${id}`}
+      className="block group transition-transform"
+    >
+      <div className="bg-accent-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         <div className="relative aspect-[4/3] w-full overflow-hidden">
           <Image
             src={image}
             alt={title}
             fill
+<<<<<<< HEAD
             className="object-cover transition-transform duration-300 group-hover:scale-110"
+=======
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
           />
           <div className="absolute top-3 left-3">
             <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-primary-light text-accent-white">
@@ -100,11 +116,19 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
             <span className="truncate">{destination}</span>
           </div>
 
+<<<<<<< HEAD
           <h2 className="font-medium text-base sm:text-lg mb-3 line-clamp-2 transition-colors">
             {title}
           </h2>
 
           <div className="flex justify-start items-center gap-4 text-sm text-primary-dark mb-4">
+=======
+          <h2 className="font-medium text-base sm:text-lg mb-3 line-clamp-2 group-hover:underline group-hover:text-primary-light transition-colors">
+            {title}
+          </h2>
+
+          <div className="flex flex-row items-center text-sm text-primary-dark mb-4 gap-3">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
             <div className="flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-primary-dark" />
               <span>{duration} Hours</span>

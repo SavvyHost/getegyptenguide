@@ -39,7 +39,11 @@ const ExcursionCard: React.FC<ExcursionCardProps> = ({
       </p>
 
       <div
+<<<<<<< HEAD
         className={`h-2 rounded-xl bg-primary-light mx-auto transition-all duration-500 ease-in-out ${
+=======
+        className={`h-2 rounded-xl bg-green-500 mx-auto transition-all duration-500 ease-in-out ${
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
           isSelected ? "w-[98%]" : "w-0"
         }`}
       />

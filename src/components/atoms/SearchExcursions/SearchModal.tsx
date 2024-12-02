@@ -85,7 +85,11 @@ const SearchModal: React.FC<SearchModalProps> = ({
             zIndex: 10, // Ensure the button is above all other content
           }}
         >
+<<<<<<< HEAD
           <CloseIcon className="text-primary-dark" />
+=======
+          <CloseIcon className="text-green-700" />
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         </IconButton>
 
         <div className="flex flex-col space-y-4 mt-10">
@@ -111,7 +115,11 @@ const SearchModal: React.FC<SearchModalProps> = ({
             variant="contained"
             color="primary"
             fullWidth
+<<<<<<< HEAD
             className="bg-primary-dark"
+=======
+            className="bg-green-700"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
           >
             Search
           </Button>

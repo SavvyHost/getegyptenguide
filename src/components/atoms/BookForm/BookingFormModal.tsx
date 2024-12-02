@@ -53,7 +53,11 @@ export default function BookingFormModal({ DetailTour }) {
     <>
       <div className="fixed bottom-0 right-0 z-30 w-full flex items-center justify-between bg-white md:hidden p-3">
         <button
+<<<<<<< HEAD
           className="w-auto p-3 bg-primary-light text-white capitalize rounded-none hover:bg-primary-dark transition duration-300 font-segoe flex-1 flex items-center justify-center"
+=======
+          className="w-auto p-3 bg-green-700 text-white capitalize rounded-none hover:bg-green-500 transition duration-300 font-segoe flex-1 flex items-center justify-center"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
           onClick={() => setIsModalOpen(true)}
         >
           Open Booking Form
@@ -64,13 +68,22 @@ export default function BookingFormModal({ DetailTour }) {
           onClick={(e) => handleWishlistClick(e, DetailTour)}
           className={`ml-4 p-3 rounded-md shadow-md border transition duration-200 ${
             isInWishlist(DetailTour.id)
+<<<<<<< HEAD
               ? "bg-primary-dark text-white hover:bg-primary-light border-transparent"
               : "bg-gray-100 text-primary-dark border-gray-700 hover:bg-gray-200"
+=======
+              ? "bg-green-600 text-white hover:bg-green-700 border-transparent"
+              : "bg-gray-100 text-green-700 border-green-700 hover:bg-gray-200"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
           }`}
         >
           <Heart
             className={
+<<<<<<< HEAD
               isInWishlist(DetailTour.id) ? "text-white" : "text-primary-dark"
+=======
+              isInWishlist(DetailTour.id) ? "text-white" : "text-green-700"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
             }
           />
         </button>
@@ -172,8 +185,11 @@ export default function BookingFormModal({ DetailTour }) {
                       <PickerBook
                         onDateChange={handleDateChange}
                         setFieldValue={setFieldValue}
+<<<<<<< HEAD
                         minDuration={DetailTour?.duration || 1}
                         initialDuration={DetailTour?.duration || 1}
+=======
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                       />
                     </div>
 

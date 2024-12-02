@@ -112,7 +112,11 @@ Please provide more information about this tour.`;
         ref={cardRef}
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
+<<<<<<< HEAD
         className="w-full  bg-accent-white rounded-none border-gray-300 border overflow-hidden transition-shadow duration-300  cursor-pointer"
+=======
+        className="w-full hover:border-accent-yellow bg-accent-white rounded-none border-gray-300 border overflow-hidden transition-shadow duration-300 hover:shadow-xl cursor-pointer"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
       >
         {/* Mobile Layout */}
         <div className="flex flex-row md:hidden">
@@ -202,16 +206,27 @@ Please provide more information about this tour.`;
         </div>
 
         {/* Desktop Layout */}
+<<<<<<< HEAD
         <div className="group hidden md:flex md:flex-row hover:cursor-pointer">
           <div className="w-2/5 h-auto relative overflow-hidden">
+=======
+        <div className="hidden md:flex md:flex-row">
+          <div className="w-2/5 h-auto relative">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
             <Image
               src={pkg?.main_image?.url || "/path/to/default/image.jpg"}
               alt={pkg.title}
               layout="fill"
               objectFit="cover"
+<<<<<<< HEAD
               className="rounded-none transform transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute top-3 left-3 bg-primary-dark text-white px-3 py-1 text-sm font-segoe rounded-sm shadow-md">
+=======
+              className="rounded-none"
+            />
+            <div className="absolute top-3 left-3 bg-primary-light text-white px-3 py-1 text-sm font-segoe rounded-sm shadow-md">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
               Special Offer 20%
             </div>
             <button
@@ -238,7 +253,11 @@ Please provide more information about this tour.`;
               </h2>
               <div className="grid grid-cols-2 gap-3 mb-4">
                 <div className="flex items-center space-x-2">
+<<<<<<< HEAD
                   <MapPin className="w-4 h-4 text-primary-dark" />
+=======
+                  <MapPin className="w-4 h-4 text-primary-light" />
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                   <div>
                     <p className="text-sm text-gray-600">Destination: </p>
                     <p className="font-segoe text-gray-800">
@@ -247,7 +266,11 @@ Please provide more information about this tour.`;
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+<<<<<<< HEAD
                   <Calendar className="w-4 h-4 text-primary-dark" />
+=======
+                  <Calendar className="w-4 h-4 text-primary-light" />
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                   <div>
                     <p className="text-sm text-gray-600">Duration: </p>
                     <p className="font-segoe text-gray-800">
@@ -256,14 +279,22 @@ Please provide more information about this tour.`;
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+<<<<<<< HEAD
                   <Users className="w-4 h-4 text-primary-dark" />
+=======
+                  <Users className="w-4 h-4 text-primary-light" />
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                   <div>
                     <p className="text-sm text-gray-600">Age range: </p>
                     <p className="font-segoe text-gray-800">{pkg.age_range}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
+<<<<<<< HEAD
                   <Globe className="w-4 h-4 text-primary-dark" />
+=======
+                  <Globe className="w-4 h-4 text-primary-light" />
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                   <div>
                     <p className="text-sm text-gray-600">Run: </p>
                     <p className="font-segoe text-gray-800">{pkg.run}</p>
@@ -281,13 +312,21 @@ Please provide more information about this tour.`;
               <div className="flex space-x-3">
                 <Link
                   href={`top-packages/${pkg.id}`}
+<<<<<<< HEAD
                   className="bg-primary-light font-bold text-accent-white text-sm py-2 px-5 rounded-sm hover:bg-primary-light"
+=======
+                  className="bg-black font-bold text-accent-white hover:text-black text-sm py-2 px-5 rounded-sm hover:bg-primary-light"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                 >
                   View Tour
                 </Link>
                 <Button
                   onClick={() => handleWhatsAppChat(pkg)}
+<<<<<<< HEAD
                   className="bg-primary-dark font-bold text-white hover:text-accent-white text-sm py-2 px-5 rounded-sm hover:bg-primary-dark flex items-center"
+=======
+                  className="bg-primary-light font-bold text-white hover:text-accent-white text-sm py-2 px-5 rounded-sm hover:bg-primary-dark flex items-center"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
                 >
                   <FaWhatsapp className="mr-2" size={21} />
                   Chat Now

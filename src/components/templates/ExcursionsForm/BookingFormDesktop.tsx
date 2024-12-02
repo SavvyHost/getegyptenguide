@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import Thanks from "@/components/molecules/Thanks";
 import "react-phone-number-input/style.css";
@@ -10,16 +11,42 @@ interface BookingFormDesktopProps {
   DetailTour: any;
   openDatePicker: boolean;
   onStateChange?: (state: any) => void;
+=======
+import Thanks from "@/components/molecules/Thanks";
+import { useState } from "react";
+import "react-phone-number-input/style.css";
+import MainDataBookingForm from "./MainDataBookingForm";
+import DefaultDetails from "@/components/organisms/DefaultDetails";
+import { useWishlist } from "@/contexts/wishlist-context";
+import { Heart } from "lucide-react";
+
+interface BookingFormDesktopProps {
+  DetailTour: any;
+  openDatePicker: boolean; // Define the openDatePicker prop
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 }
 
 const BookingFormDesktop: React.FC<BookingFormDesktopProps> = ({
   DetailTour,
   openDatePicker,
+<<<<<<< HEAD
   onStateChange,
 }) => {
   const { toggleWishlist, isInWishlist } = useWishlist();
 
   const handleWishlistClick = (e: React.MouseEvent, tour: any) => {
+=======
+}) => {
+  const [isThanksVisible, setIsThanksVisible] = useState(false);
+
+  const { toggleWishlist, isInWishlist } = useWishlist();
+
+  const handleCloseThanks = () => {
+    setIsThanksVisible(false);
+  };
+
+  const handleWishlistClick = (e, tour) => {
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
     e.preventDefault();
     e.stopPropagation();
     toggleWishlist(tour);
@@ -37,6 +64,7 @@ const BookingFormDesktop: React.FC<BookingFormDesktopProps> = ({
           </h1>
         </div>
 
+<<<<<<< HEAD
         <div className="flex gap-2">
           <ShareButton
             url={typeof window !== "undefined" ? window.location.href : ""}
@@ -67,6 +95,36 @@ const BookingFormDesktop: React.FC<BookingFormDesktopProps> = ({
         isDatePickerOpen={openDatePicker}
         onStateChange={onStateChange}
       />
+=======
+        <button
+          onClick={(e) => handleWishlistClick(e, DetailTour)}
+          className={`p-2 rounded-md font-semibold border transition-all duration-200 ${
+            isInWishlist(DetailTour.id)
+              ? "bg-primary-light text-accent-white hover:bg-primary-dark"
+              : "bg-gray-100 text-green-700 border-green-700 hover:bg-gray-200"
+          }`}
+        >
+          {isInWishlist(DetailTour.id) ? (
+            <Heart />
+          ) : (
+            <Heart className="text-primary-dark" />
+          )}
+        </button>
+      </div>
+
+      <MainDataBookingForm
+        isDatePickerOpen={openDatePicker} // Pass openDatePicker prop here
+        DetailTour={DetailTour}
+        setIsThanksVisible={setIsThanksVisible}
+      />
+
+      {isThanksVisible && (
+        <Thanks
+          onClose={handleCloseThanks}
+          message="Thank you for your submission!"
+        />
+      )}
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
     </div>
   );
 };

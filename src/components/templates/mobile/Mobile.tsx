@@ -5,8 +5,13 @@ import MobileSearchModal from "@/components/atoms/Search/MobileSearchModal";
 import TravelPackagePage from "@/components/molecules/TravelCardSearch/TravelCardSearch";
 import { ToursData } from "@/types/tour";
 import MobileSidebar from "@/components/atoms/Filters/MobileSidebar";
+<<<<<<< HEAD
 import Explore from "@/components/molecules/ExploreExcursios";
 import { Filter, SlidersHorizontal } from "lucide-react";
+=======
+import Explore from "@/components/molecules/ExploreTours";
+import { SlidersHorizontal } from "lucide-react";
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
 
 interface MobileProps {
   toursData: ToursData;
@@ -88,7 +93,11 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
     <div className="bg-[#FAFAFA] flex flex-col">
       <div
         className={`fixed left-0 right-0 bg-[#FAFAFA] p-3 z-30 transition-all duration-300 ${
+<<<<<<< HEAD
           visible ? "top-[64px]" : "top-0"
+=======
+          visible ? "top-[70px]" : "top-0"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         }`}
       >
         <div className="flex justify-center items-center gap-3 w-full">
@@ -98,7 +107,11 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
           <div>
             <button
               onClick={() => setIsModalOpen(true)}
+<<<<<<< HEAD
               className="bg-primary-dark text-nowrap py-3 px-5 text-white rounded-md"
+=======
+              className="bg-[#4CAF50] text-nowrap py-3 px-5 text-white rounded-md"
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
             >
               <SlidersHorizontal />
             </button>
@@ -121,7 +134,13 @@ const Mobile: React.FC<MobileProps> = ({ toursData }) => {
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div className="mt-36 px-3">
+=======
+      <div
+        className={`transition-all duration-300 ${visible ? "mt-36" : "mt-24"}`}
+      >
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         <Explore />
       </div>
       <div className="flex-1">

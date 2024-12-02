@@ -24,7 +24,11 @@ const DestinationSection: React.FC<Props> = ({ Destinations }) => {
 
   return (
     <div className="">
+<<<<<<< HEAD
       <div className="text-left mb-4 text-black font-segoe sm:font-semi-bold font-medium text-2xl md:text-special-offer">
+=======
+      <div className="text-left lg:my-8 my-4 text-black font-segoe sm:font-semi-bold font-medium text-2xl md:text-special-offer">
+>>>>>>> ecf2ba5509f9b07b050b83248c669f819d980e94
         Destination
       </div>
       <div>
