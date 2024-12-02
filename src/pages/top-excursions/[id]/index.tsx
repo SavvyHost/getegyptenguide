@@ -59,7 +59,7 @@ const ExcursionDetails: React.FC<ImageGalleryProps> = ({ DetailTour }) => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative mt-2">
       {/* Main content container */}
       <div className="flex flex-col md:flex-row md:pt-5 md:px-16">
         {/* Main content column that takes full width on mobile */}
@@ -77,7 +77,7 @@ const ExcursionDetails: React.FC<ImageGalleryProps> = ({ DetailTour }) => {
             />
           </div>
 
-          <div className="mt-0 overflow-hidden">
+          <div className=" overflow-hidden">
             <MyPage DetailTour={DetailTour} />
           </div>
         </div>

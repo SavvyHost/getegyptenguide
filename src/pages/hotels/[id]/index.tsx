@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 
 export default function HotelPage({ hotel }: HotelPageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 mt-14">
+    <div className="max-w-7xl mx-auto px-4 py-8 mt-24">
       <div className="mb-6">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">{hotel.name}</h1>
@@ -77,7 +77,7 @@ export default function HotelPage({ hotel }: HotelPageProps) {
                 ${hotel.price}
               </span>
             </div>
-            <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+            <button className="w-full bg-primary-dark text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-light transition-colors">
               Book Now
             </button>
           </div>

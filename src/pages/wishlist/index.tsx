@@ -40,7 +40,7 @@ const WishlistPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-9 mt-16 py-8">
+    <div className="container mx-auto lg:px-9 px-3 lg:mt-24 mt-14 py-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-left text-red font-segoe sm:font-semi-bold md:text-special-offer">
           My Wishlist ({wishlistCount} items)

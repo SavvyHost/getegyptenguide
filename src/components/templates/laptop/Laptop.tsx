@@ -53,7 +53,7 @@ const Laptop: React.FC<LaptopProps> = ({ toursData }) => {
   return (
     <div className=" bg-[#FAFAFA]">
       {/* Search Bar */}
-      <div className="mt-20">
+      <div className="mt-24">
         <SearchInput />
       </div>
       <div className="">
