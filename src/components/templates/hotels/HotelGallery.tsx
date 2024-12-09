@@ -70,26 +70,28 @@ export default function HotelGallery({ images }: HotelGalleryProps) {
   const remainingCount = Math.max(0, images.length - 5);
 
   return (
-    <div className="grid grid-cols-4 gap-2 mb-8 h-[450px]">
-      {/* Main large image */}
-      <div className="col-span-2 row-span-2 relative">
-        <GalleryImage image={displayedImages[0]} index={0} priority={true} />
-      </div>
+    <div className="mb-8">
+      {/* Mobile Layout */}
+      <div className="sm:hidden grid grid-cols-1 gap-2">
+        {/* Main large image at the top */}
+        <div className="relative hidden">
+          <GalleryImage image={displayedImages[0]} index={0} priority={true} />
+        </div>
 
-      {/* Right side grid */}
-      <div className="col-span-2 grid grid-cols-2 gap-2">
-        {displayedImages.slice(1, 4).map((image, idx) => (
-          <div key={image.id} className="relative">
-            <GalleryImage image={image} index={idx + 1} priority={false} />
-          </div>
-        ))}
+        {/* Remaining 4 images in a single row */}
+        <div className="grid grid-cols-4 gap-2">
+          {displayedImages.slice(1, 5).map((image, idx) => (
+            <div key={image.id} className="relative">
+              <GalleryImage image={image} index={idx + 1} priority={false} />
+            </div>
+          ))}
+        </div>
 
-        {/* Fifth image - "More Photos" link */}
+        {/* "See More" Image */}
         <div className="relative">
           <a
-            href={displayedImages[4].url}
+            href="#"
             data-fancybox="gallery"
-            data-caption={displayedImages[4].alt}
             className="relative block w-full h-full overflow-hidden rounded-lg group"
           >
             <Image
@@ -101,7 +103,7 @@ export default function HotelGallery({ images }: HotelGalleryProps) {
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
 
-            {/* Overlay for more photos on the fifth image */}
+            {/* Overlay for more photos on the "See More" image */}
             {remainingCount > 0 && (
               <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-white transition-opacity group-hover:opacity-90">
                 <ImageIcon className="w-8 h-8 mb-2" />
@@ -110,6 +112,53 @@ export default function HotelGallery({ images }: HotelGalleryProps) {
               </div>
             )}
           </a>
+        </div>
+      </div>
+
+      {/* Desktop Layout */}
+      <div className="hidden sm:grid grid-cols-4 gap-2">
+        {/* Main large image on the left */}
+        <div className="col-span-2 row-span-2 relative">
+          <GalleryImage image={displayedImages[0]} index={0} priority={true} />
+        </div>
+
+        {/* Right side grid */}
+        <div className="col-span-2 grid grid-cols-2 gap-2">
+          {displayedImages.slice(1, 4).map((image, idx) => (
+            <div key={image.id} className="relative">
+              <GalleryImage image={image} index={idx + 1} priority={false} />
+            </div>
+          ))}
+
+          {/* Fifth image - "More Photos" link */}
+          <div className="relative">
+            <a
+              href="#"
+              data-fancybox="gallery"
+              data-caption={displayedImages[4].alt}
+              className="relative block w-full h-full overflow-hidden rounded-lg group"
+            >
+              <Image
+                src={displayedImages[4].url}
+                alt={displayedImages[4].alt}
+                width={1000}
+                height={1000}
+                priority={true}
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+
+              {/* Overlay for more photos on the fifth image */}
+              {remainingCount > 0 && (
+                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-white transition-opacity group-hover:opacity-90">
+                  <ImageIcon className="w-8 h-8 mb-2" />
+                  <span className="text-xl font-semibold">
+                    +{remainingCount}
+                  </span>
+                  <span className="text-sm">More Photos</span>
+                </div>
+              )}
+            </a>
+          </div>
         </div>
       </div>
 

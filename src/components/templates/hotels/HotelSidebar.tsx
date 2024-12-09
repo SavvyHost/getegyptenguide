@@ -12,7 +12,7 @@ import {
   Button,
   IconButton,
 } from "@mui/material";
-import { Search, Clear } from "@mui/icons-material";
+import { Search, Clear, X } from "@mui/icons-material";
 
 interface FilterOption {
   label: string;
@@ -49,7 +49,15 @@ const amenities: FilterOption[] = [
   { label: "Pet-friendly", count: 25 },
 ];
 
-export default function HotelSidebar() {
+interface HotelSidebarProps {
+  isMobile?: boolean;
+  onClose?: () => void;
+}
+
+export default function HotelSidebar({
+  isMobile = false,
+  onClose,
+}: HotelSidebarProps) {
   const [priceRange, setPriceRange] = useState<number[]>([0, 20000]);
   const [searchText, setSearchText] = useState("");
 
@@ -77,16 +85,28 @@ export default function HotelSidebar() {
   return (
     <Box
       sx={{
-        width: 320,
+        width: isMobile ? "100%" : 320,
         p: 3,
-        bgcolor: "background.paper",
-        borderRadius: 2,
-        boxShadow: 3,
+        height: isMobile ? "100%" : "auto",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
-      <Typography variant="h6" fontWeight="bold" mb={2}>
-        Filter by:
-      </Typography>
+      {isMobile && (
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+          mb={2}
+        >
+          <Typography variant="h6" fontWeight="bold">
+            Filter by:
+          </Typography>
+          <IconButton onClick={onClose}>
+            <X />
+          </IconButton>
+        </Box>
+      )}
 
       {/* Search Bar */}
       <Box display="flex" alignItems="center" mb={3}>
@@ -112,50 +132,66 @@ export default function HotelSidebar() {
         />
       </Box>
 
-      {renderFilterSection("Property types", propertyTypes)}
+      <Box sx={{ overflowY: "auto", flex: 1 }}>
+        {renderFilterSection("Property types", propertyTypes)}
 
-      <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 2 }} />
 
-      {/* Price Range Slider */}
-      <Box>
-        <Typography variant="subtitle1" fontWeight="medium">
-          Your budget (per night)
-        </Typography>
-        <Slider
-          value={priceRange}
-          onChange={handlePriceChange}
-          valueLabelDisplay="auto"
-          min={0}
-          max={20000}
-          step={100}
-          color="primary"
-        />
-        <Box display="flex" justifyContent="space-between">
-          <Typography variant="body2">
-            EGP {priceRange[0].toLocaleString()}
+        {/* Price Range Slider */}
+        <Box>
+          <Typography variant="subtitle1" fontWeight="medium">
+            Your budget (per night)
           </Typography>
-          <Typography variant="body2">
-            EGP {priceRange[1].toLocaleString()}
-          </Typography>
+          <Slider
+            value={priceRange}
+            onChange={handlePriceChange}
+            valueLabelDisplay="auto"
+            min={0}
+            max={20000}
+            step={100}
+            color="primary"
+          />
+          <Box display="flex" justifyContent="space-between">
+            <Typography variant="body2">
+              EGP {priceRange[0].toLocaleString()}
+            </Typography>
+            <Typography variant="body2">
+              EGP {priceRange[1].toLocaleString()}
+            </Typography>
+          </Box>
         </Box>
+
+        <Divider sx={{ my: 2 }} />
+
+        {renderFilterSection("Popular filters", popularFilters)}
+
+        <Divider sx={{ my: 2 }} />
+
+        {renderFilterSection("Amenities", amenities)}
       </Box>
 
-      <Divider sx={{ my: 2 }} />
-
-      {renderFilterSection("Popular filters", popularFilters)}
-
-      <Divider sx={{ my: 2 }} />
-
-      {renderFilterSection("Amenities", amenities)}
-
-      <Divider sx={{ my: 2 }} />
-
       {/* Apply Filters Button */}
-      <Box display="flex" justifyContent="normal" mt={3}>
+      <Box
+        display="flex"
+        justifyContent="normal"
+        mt={3}
+        sx={{
+          position: isMobile ? "sticky" : "static",
+          bottom: 0,
+          background: "white",
+          pt: 2,
+          boxShadow: isMobile ? "0 -10px 15px -3px rgba(0,0,0,0.1)" : "none",
+        }}
+      >
         <Button
           className="bg-primary-dark hover:bg-primary-light text-white w-full"
           size="large"
-          sx={{ textTransform: "none", fontWeight: "bold" }}
+          sx={{
+            textTransform: "none",
+            fontWeight: "bold",
+            py: 1.5,
+          }}
+          onClick={onClose}
         >
           Apply Filters
         </Button>

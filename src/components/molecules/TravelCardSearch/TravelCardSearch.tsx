@@ -277,7 +277,7 @@ Please provide more information about this tour.`;
                   ${pkg.min_price}
                 </p>
                 <p className="text-sm text-gray-600">Per Person</p>
-              </div>
+              </div>0
               <div className="flex space-x-3">
                 <Link
                   href={`top-packages/${pkg.id}`}

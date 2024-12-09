@@ -39,7 +39,7 @@ export async function getStaticPaths() {
 
 export default function HotelPage({ hotel }: HotelPageProps) {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 mt-24">
+    <div className="max-w-7xl mx-auto px-4 lg:py-8 py-3 mt-24">
       <div className="mb-6">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">{hotel.name}</h1>
