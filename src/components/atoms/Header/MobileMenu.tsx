@@ -6,6 +6,7 @@ import {
   X,
   Globe,
   Bed,
+  Plane,
   Compass,
   Ship,
   BookOpen,
@@ -19,6 +20,8 @@ const getIcon = (label: string) => {
       return Home;
     case "hotels":
       return Bed;
+    case "planes":
+      return Plane;
     case "tour packages":
       return Package;
     case "short excursions":

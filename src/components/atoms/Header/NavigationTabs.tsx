@@ -2,7 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import { Bed, Compass, Ship, BookOpen, Package, Home } from "lucide-react";
+import {
+  Bed,
+  Compass,
+  Ship,
+  BookOpen,
+  Package,
+  Home,
+  Plane,
+} from "lucide-react";
 
 interface NavLink {
   href: string;
@@ -20,6 +28,8 @@ const getIcon = (label: string) => {
       return Home;
     case "hotels":
       return Bed;
+    case "planes":
+      return Plane;
     case "tour packages":
       return Package;
     case "short excursions":
