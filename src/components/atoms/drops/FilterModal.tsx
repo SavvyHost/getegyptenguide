@@ -164,7 +164,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
             className="transition-colors hover:bg-blue-300 hover:border-blue-300 px-2 cursor-pointer bg-blue-50 text-blue-400 hover:text-white border-2 border-gray-300 p-2 rounded-lg"
             color="primary"
           >
-            Apply Filters
+            Apply Filter
           </div>
         </Box>
       </Box>
