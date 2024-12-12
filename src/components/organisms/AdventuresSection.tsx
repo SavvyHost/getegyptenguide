@@ -1,6 +1,7 @@
 import React from "react";
 import Adventures from "../molecules/Adventures/Adventures";
 
+
 interface Category {
   id: number;
   name: string;
