@@ -8,32 +8,36 @@ import Roude from "../public/assets/roud.jpeg";
 import Exp from "../public/assets/5-TOP-10-amazing-places-to-visit-in-Egypt-jintravel.com 1.png";
 import blogBg from "../public/assets/bgblogs.png";
 
-export const planes = [
+export const flights = [
   {
     id: 1,
-    name: 'Cessna Citation X',
-    capacity: 8,
-    range: '3,700 nm',
-    price: 'From $4,500/hour',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80',
+    airline: 'Delta',
+    heliport: 'Scandium City Heliport',
+    price: '$10 avg/person',
+    takeoff: 'Thu Oct 31 00:16 AM',
+    landing: 'Wed Oct 16 00:19 AM',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Delta_logo.svg/512px-Delta_logo.svg.png', // Delta Airlines logo
   },
   {
     id: 2,
-    name: 'Gulfstream G650',
-    capacity: 19,
-    range: '7,000 nm',
-    price: 'From $8,000/hour',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80',
+    airline: 'American Airlines',
+    heliport: 'Beryllium City Heliport',
+    price: '$15 avg/person',
+    takeoff: 'Fri Nov 01 01:00 AM',
+    landing: 'Thu Oct 17 01:30 AM',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/American_Airlines_Logo_2013.svg/512px-American_Airlines_Logo_2013.svg.png', // American Airlines logo
   },
   {
     id: 3,
-    name: 'Embraer Phenom 300',
-    capacity: 7,
-    range: '2,000 nm',
-    price: 'From $3,500/hour',
-    image: 'https://images.unsplash.com/photo-1583416750470-965b2707b355?auto=format&fit=crop&q=80',
+    airline: 'United',
+    heliport: 'Carbon City Heliport',
+    price: '$12 avg/person',
+    takeoff: 'Sat Nov 02 02:45 AM',
+    landing: 'Fri Oct 18 02:50 AM',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/United_Airlines_Logo.svg/512px-United_Airlines_Logo.svg.png', // United Airlines logo
   },
 ];
+
 
  export const hotelData = [
     {

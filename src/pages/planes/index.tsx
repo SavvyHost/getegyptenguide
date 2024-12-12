@@ -1,6 +1,6 @@
 import Banner from "@/components/molecules/planes/BannerPlane";
 import PlaneCard from "@/components/molecules/planes/PlaneCard";
-import { planes } from "@/data";
+import { flights } from "@/data";
 import React from "react";
 
 function Planes() {
@@ -13,14 +13,15 @@ function Planes() {
           Available Aircraft
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {planes.map((plane) => (
+          {flights.map((plane) => (
             <PlaneCard
               key={plane.id}
-              image={plane.image}
-              name={plane.name}
-              capacity={plane.capacity}
-              range={plane.range}
+              logo={plane.logo}
+              airline={plane.airline}
+              heliport={plane.heliport}
               price={plane.price}
+              landing={plane.landing}
+              takeoff={plane.takeoff}
             />
           ))}
         </div>

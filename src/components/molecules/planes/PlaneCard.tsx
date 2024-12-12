@@ -1,36 +1,62 @@
 import React from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, PlaneLanding, PlaneTakeoffIcon } from "lucide-react";
+import Image from "next/image";
 
-interface PlaneCardProps {
-  image: string;
-  name: string;
-  capacity: number;
-  range: string;
+interface FlightCardProps {
+  logo: string;
+  airline: string;
+  heliport: string;
   price: string;
+  takeoff: string;
+  landing: string;
 }
 
-export default function PlaneCard({
-  image,
-  name,
-  capacity,
-  range,
+export default function FlightCard({
+  logo,
+  airline,
+  heliport,
   price,
-}: PlaneCardProps) {
+  takeoff,
+  landing,
+}: FlightCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-      <div
-        className="h-48 bg-cover bg-center"
-        style={{ backgroundImage: `url(${image})` }}
-      />
+    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200">
+      {/* Airline Logo */}
+      <div className="flex items-center justify-center bg-gray-50 h-36">
+        <Image
+          src="https://mytravel.bookingcore.co/uploads/demo/flight/airline/img3.jpg"
+          alt={`${airline} logo`}
+          className="h-full w-full  "
+          width={200}
+          height={200}
+        />
+      </div>
 
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{name}</h3>
+      {/* Card Content */}
+      <div className="p-4">
+        <h3 className="text-lg font-bold text-gray-800 mb-2">{heliport}</h3>
+        <p className="text-gray-500 text-sm mb-4">{price}</p>
+
         <div className="space-y-2 mb-4">
-          <p className="text-gray-600">Capacity: {capacity} passengers</p>
-          <p className="text-gray-600">Range: {range}</p>
-          <p className="text-lg font-bold text-blue-600">{price}</p>
+          <div className="flex items-center gap-2">
+            <span className="text-blue-500">
+              <PlaneTakeoffIcon />
+            </span>
+            <p className="text-gray-600 text-sm">
+              <strong>Take off:</strong> {takeoff}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-blue-500">
+              <PlaneLanding />
+            </span>
+            <p className="text-gray-600 text-sm">
+              <strong>Landing:</strong> {landing}
+            </p>
+          </div>
         </div>
 
+        {/* Action Buttons */}
         <div className="flex gap-4">
           <button
             onClick={() => window.open("https://wa.me/1234567890", "_blank")}
