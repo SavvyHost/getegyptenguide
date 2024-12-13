@@ -97,6 +97,9 @@ export default function PriceDetails({ hotel }) {
           onChange={handleDateChange}
           showShortcuts={true}
           options={{
+            mobileInput: true,
+            mobilePrimaryColor: "blue",
+            mobileSecondaryColor: "white",
             minDate: new Date(),
             maxDate: new Date(new Date().getFullYear() + 1, 11, 31),
           }}
