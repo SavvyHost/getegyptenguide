@@ -57,15 +57,15 @@ export default function FlightCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-4">
+        <div className="flex gap-1">
           <button
             onClick={() => window.open("https://wa.me/1234567890", "_blank")}
-            className="flex-1 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition duration-200 flex items-center justify-center gap-2"
+            className="flex-1 bg-green-500 text-white py-2 px-2 rounded-md hover:bg-green-600 transition duration-200 flex items-center justify-center gap-2"
           >
             <MessageCircle size={20} />
             WhatsApp
           </button>
-          <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200">
+          <button className="flex-1 bg-blue-600 text-white py-2 px-2 rounded-md hover:bg-blue-700 transition duration-200">
             Book Now
           </button>
         </div>

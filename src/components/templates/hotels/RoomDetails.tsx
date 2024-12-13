@@ -212,7 +212,7 @@ const RoomCard: React.FC<{ room: Room }> = ({ room }) => (
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-4 lg:mt-0">
       <div className="max-w-5xl px-4">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">
           Available Rooms

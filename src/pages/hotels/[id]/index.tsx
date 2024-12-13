@@ -7,6 +7,7 @@ import HotelGallery from "@/components/templates/hotels/HotelGallery";
 import HotelAmenities from "@/components/templates/hotels/HotelAmenities";
 import ReviewSlider from "@/components/templates/hotels/ReviewSlider";
 import RoomDetails from "@/components/templates/hotels/RoomDetails";
+import PriceDetails from "@/components/templates/hotels/PriceDetails";
 
 interface HotelPageProps {
   hotel: Hotel;
@@ -68,20 +69,7 @@ export default function HotelPage({ hotel }: HotelPageProps) {
           <ReviewSlider reviews={hotel.reviews} />
         </div>
 
-        <div className="md:col-span-1">
-          <div className="bg-white p-6 rounded-lg shadow-md sticky top-20">
-            <h3 className="text-xl font-semibold mb-4">Price Details</h3>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-gray-600">Starting from</span>
-              <span className="text-2xl font-bold text-primary">
-                ${hotel.price}
-              </span>
-            </div>
-            <button className="w-full bg-primary-dark text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-light transition-colors">
-              Book Now
-            </button>
-          </div>
-        </div>
+        <PriceDetails hotel={hotel} />
       </div>
       <RoomDetails />
     </div>

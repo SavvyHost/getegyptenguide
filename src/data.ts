@@ -36,6 +36,15 @@ export const flights = [
     landing: 'Fri Oct 18 02:50 AM',
     logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/United_Airlines_Logo.svg/512px-United_Airlines_Logo.svg.png', // United Airlines logo
   },
+  {
+    id: 3,
+    airline: 'United',
+    heliport: 'Carbon City Heliport',
+    price: '$12 avg/person',
+    takeoff: 'Sat Nov 02 02:45 AM',
+    landing: 'Fri Oct 18 02:50 AM',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/United_Airlines_Logo.svg/512px-United_Airlines_Logo.svg.png', // United Airlines logo
+  },
 ];
 
 
