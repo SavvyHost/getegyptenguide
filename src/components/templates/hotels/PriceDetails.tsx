@@ -81,7 +81,7 @@ export default function PriceDetails({ hotel }) {
   };
 
   return (
-    <div className="bg-white  shadow-lg rounded-lg p-6 sticky top-20 w-full max-w-md border border-gray-200">
+    <div className="bg-white  shadow-lg rounded-lg p-6  w-full max-w-md border border-gray-200">
       <div className="flex items-center mb-4 border-b pb-3">
         <Calendar className="mr-2 text-blue-600" />
         <h3 className="text-xl font-semibold text-gray-800">Price Details</h3>
