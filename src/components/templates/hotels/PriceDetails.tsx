@@ -83,7 +83,7 @@ export default function PriceDetails({ hotel }) {
   return (
     <div className="bg-white  shadow-lg rounded-lg p-6  w-full max-w-md border border-gray-200">
       <div className="flex items-center mb-4 border-b pb-3">
-        <Calendar className="mr-2 text-blue-600" />
+        <Calendar className="mr-2 text-accent-yellow" />
         <h3 className="text-xl font-semibold text-gray-800">Price Details</h3>
       </div>
 
@@ -95,6 +95,7 @@ export default function PriceDetails({ hotel }) {
         <Datepicker
           value={dateRange}
           onChange={handleDateChange}
+          showShortcuts={true}
           options={{
             minDate: new Date(),
             maxDate: new Date(new Date().getFullYear() + 1, 11, 31),
@@ -107,7 +108,7 @@ export default function PriceDetails({ hotel }) {
         {/* Adults */}
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Users className="mr-2 text-blue-600" />
+            <Users className="mr-2 text-accent-yellow" />
             <span className="text-gray-700">Adults</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -132,7 +133,7 @@ export default function PriceDetails({ hotel }) {
         {/* Children */}
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Users className="mr-2 text-blue-600" />
+            <Users className="mr-2 text-accent-yellow" />
             <span className="text-gray-700">Children</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -157,7 +158,7 @@ export default function PriceDetails({ hotel }) {
         {/* Rooms */}
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <Bed className="mr-2 text-blue-600" />
+            <Bed className="mr-2 text-accent-yellow" />
             <span className="text-gray-700">Rooms</span>
           </div>
           <div className="flex items-center space-x-2">
@@ -188,7 +189,7 @@ export default function PriceDetails({ hotel }) {
           <span className="text-gray-600">Total Nights</span>
           <span className="text-gray-800">{bookingDetails.nights}</span>
         </div>
-        <div className="flex justify-between font-bold text-blue-600">
+        <div className="flex justify-between font-bold text-accent-yellow">
           <span>Total Price</span>
           <span>${totalPrice.toFixed(2)}</span>
         </div>
@@ -200,7 +201,7 @@ export default function PriceDetails({ hotel }) {
           w-full mt-4 py-3 rounded-md text-white font-semibold transition-colors
           ${
             bookingDetails.isValidBooking
-              ? "bg-blue-600 hover:bg-blue-700"
+              ? "bg-primary-dark hover:bg-primary-light"
               : "bg-gray-400 cursor-not-allowed"
           }
         `}
