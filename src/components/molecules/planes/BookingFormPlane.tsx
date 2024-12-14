@@ -58,7 +58,7 @@ export default function BookingForm() {
             options={destinationsOptions}
             value={departure}
             onChange={setDeparture}
-            placeholder="Select departure city"
+            placeholder="Select departure"
             className="w-full"
           />
         </div>
@@ -72,7 +72,7 @@ export default function BookingForm() {
             options={destinationsOptions}
             value={destination}
             onChange={setDestination}
-            placeholder="Select destination city"
+            placeholder="Select destination"
             className="w-full"
           />
         </div>
