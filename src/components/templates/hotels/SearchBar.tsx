@@ -12,7 +12,7 @@ import {
   Slide,
 } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
-import DatePicker from "react-datepicker";
+import Datepicker from "react-tailwindcss-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import {
@@ -56,7 +56,10 @@ interface SearchBarProps {
 export default function SearchBar({
   onSearch,
   initialLocation = "",
-  initialDateRange = [new Date(), new Date()],
+  initialDateRange = [
+    new Date(),
+    new Date(new Date().setDate(new Date().getDate() + 1)),
+  ],
   initialGuests = {
     adults: 2,
     children: 0,
@@ -64,10 +67,14 @@ export default function SearchBar({
   },
 }: SearchBarProps) {
   const [location, setLocation] = useState(initialLocation);
-  const [dateRange, setDateRange] = useState<[Date, Date]>(initialDateRange);
+  const [dateRange, setDateRange] =
+    useState<[Date | null, Date | null]>(initialDateRange);
   const [guests, setGuests] = useState(initialGuests);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [startDate, endDate] = dateRange;
+
+  const handleDateChange = (update: [Date | null, Date | null]) => {
+    setDateRange(update);
+  };
 
   const handleGuestChange = (
     type: "adults" | "children" | "rooms",
@@ -110,12 +117,14 @@ export default function SearchBar({
   );
 
   const handleSearchSubmit = () => {
-    onSearch?.({
-      location,
-      dateRange,
-      guests,
-    });
-    setIsSearchModalOpen(false);
+    if (dateRange[0] && dateRange[1]) {
+      onSearch?.({
+        location,
+        dateRange: dateRange as [Date, Date],
+        guests,
+      });
+      setIsSearchModalOpen(false);
+    }
   };
 
   const guestSummary = `${guests.adults} adults · ${guests.children} children · ${guests.rooms} room`;
@@ -173,16 +182,18 @@ export default function SearchBar({
           />
 
           {/* Date Picker */}
-          <div className="relative w-full">
-            <DatePicker
-              selectsRange={true}
-              startDate={startDate}
-              endDate={endDate}
-              onChange={(update) => setDateRange(update as [Date, Date])}
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          <div className="relative w-ful border border-gray-300 sm:rounded-md sm:focus-within:border-blue-500 sm:focus-within:ring-1 sm:focus-within:ring-blue-500l">
+            <Datepicker
+              selectsRange
+              startDate={dateRange[0]}
+              endDate={dateRange[1]}
+              value={dateRange}
+              onChange={handleDateChange}
+              minDate={new Date()}
+              maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
+              className="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-yellow-500"
               placeholderText="Select date range"
             />
-            <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
           </div>
 
           {/* Guest Selection */}
@@ -226,18 +237,19 @@ export default function SearchBar({
             />
           </Box>
 
-          <div className="relative ">
-            <div className="relative">
-              <DatePicker
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={(update) => setDateRange(update as [Date, Date])}
-                className="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                placeholderText="Select date range"
-              />
-              <CalendarIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-            </div>
+          {/* Date Picker */}
+          <div className="relative py-2 sm:border border-gray-300 sm:rounded-md sm:focus-within:border-blue-500 sm:focus-within:ring-1 sm:focus-within:ring-blue-500">
+            <Datepicker
+              selectsRange
+              startDate={dateRange[0]}
+              endDate={dateRange[1]}
+              value={dateRange}
+              onChange={handleDateChange}
+              minDate={new Date()}
+              maxDate={new Date(new Date().getFullYear() + 1, 11, 31)}
+              className="w-full pl-10 pr-4  border border-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholderText="Select date range"
+            />
           </div>
 
           {/* Guests and Rooms */}

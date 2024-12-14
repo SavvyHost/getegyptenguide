@@ -92,18 +92,29 @@ export default function PriceDetails({ hotel }) {
         <label className="block text-gray-600 font-medium mb-2">
           Select Dates
         </label>
-        <Datepicker
-          value={dateRange}
-          onChange={handleDateChange}
-          showShortcuts={true}
-          options={{
-            mobileInput: true,
-            mobilePrimaryColor: "blue",
-            mobileSecondaryColor: "white",
-            minDate: new Date(),
-            maxDate: new Date(new Date().getFullYear() + 1, 11, 31),
-          }}
-        />
+        <div
+          className={`
+      border border-gray-300 rounded-md focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500
+      sm:w-full sm:h-auto sm:block md:w-auto md:h-auto
+    `}
+        >
+          <Datepicker
+            value={dateRange}
+            onChange={handleDateChange}
+            showShortcuts={true}
+            options={{
+              mobileInput: true,
+              mobilePrimaryColor: "blue",
+              mobileSecondaryColor: "white",
+              minDate: new Date(),
+              maxDate: new Date(new Date().getFullYear() + 1, 11, 31),
+            }}
+            className={`
+        p-2 text-gray-700 bg-white focus:outline-none
+        w-full h-full sm:h-auto
+      `}
+          />
+        </div>
       </div>
 
       {/* Occupancy Controls */}

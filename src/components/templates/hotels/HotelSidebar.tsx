@@ -13,6 +13,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { Search, Clear, X } from "@mui/icons-material";
+import { XIcon } from "lucide-react";
 
 interface FilterOption {
   label: string;
@@ -103,7 +104,7 @@ export default function HotelSidebar({
             Filter by:
           </Typography>
           <IconButton onClick={onClose}>
-            <X />
+            <XIcon />
           </IconButton>
         </Box>
       )}

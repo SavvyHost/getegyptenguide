@@ -14,21 +14,19 @@ export default function HotelsPage() {
 
   return (
     <Container maxWidth="xl" className="relative mt-20 sm:mt-32">
-      <div className="sm:hidden mb-4 px-4">
+      <div className="sm:hidden flex gap-x-2 ">
         <button
           onClick={() => setIsFilterOpen(true)}
-          className="flex items-center justify-center gap-2 w-full bg-gray-100 hover:bg-gray-200 px-4 py-3 rounded-lg shadow-md text-gray-700 font-medium"
+          className="flex items-center px-5 justify-center  bg-gray-100 hover:bg-gray-200  rounded-lg shadow-md text-gray-700 font-medium"
         >
           <Filter className="w-5 h-5" />
-          <span>Filters</span>
         </button>
+        <SearchBar
+          isMobile={false}
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
       </div>
-
-      <SearchBar
-        isMobile={false}
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-      />
 
       <Box
         display={{ xs: "block", sm: "flex" }}

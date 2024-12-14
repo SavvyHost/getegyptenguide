@@ -82,7 +82,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end pb-4">
         <h3 className="text-accent-white text-xl font-semibold text-shadow-custom absolute top-4 left-4">
           {name}
-          <div className="w-full border-b border-accent-yellow my-1" />
+          <div className="w-full border-b border-primary-light my-1" />
         </h3>{" "}
       </div>
     </div>
