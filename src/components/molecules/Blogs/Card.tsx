@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <Link href={`/blogs/${id}`} aria-label={`View blog post "${title}"`}>
-      <div className="flex-shrink-0 mb-6 max-w-md mx-2 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl bg-[#FAFAFA] h-80">
+      <div className="flex-shrink-0 mb-6 max-w-md mx-2 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl h-80">
         <div className="flex flex-col h-full">
           {/* Image Section - 1/2 of the card height */}
           <div className="relative h-1/2">
@@ -41,7 +41,7 @@ const Card: React.FC<CardProps> = ({
           </div>
 
           {/* Content Section - 1/2 of the card height */}
-          <div className="flex flex-col justify-between h-1/2 p-4 bg-white">
+          <div className="flex flex-col justify-between  p-4 bg-white">
             <h2 className="text-base md:text-xl font-segoe">{title}</h2>
             <p
               className="text-gray-700 font-light line-clamp-3 overflow-hidden"
