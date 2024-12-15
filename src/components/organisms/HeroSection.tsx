@@ -5,7 +5,7 @@ import TwoMainButtons from "../atoms/Form/TwoMainButtons";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full h-[95vh] overflow-hidden">
+    <section className="relative w-full h-[90vh] overflow-hidden">
       {/* Video Background */}
       <div className="relative w-full h-0" style={{ paddingBottom: "56.25%" }}>
         <iframe

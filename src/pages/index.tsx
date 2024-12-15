@@ -52,7 +52,7 @@ export default function Home({
       {/* <div className="lg:px-16 p-4 ">
         <OffersSection />
       </div> */}
-      <div className="lg:px-16 p-4 ">
+      <div className="lg:px-16 px-4 ">
         <WhyUsSection />
       </div>
       <div className="lg:px-16 p-4 bg-[#FAFAFA] ">

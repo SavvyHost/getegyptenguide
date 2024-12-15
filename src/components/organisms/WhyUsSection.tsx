@@ -66,7 +66,7 @@ const FeatureSection: FC = () => {
   );
 
   return (
-    <section className="max-w-screen-xl mx-auto py-10  flex flex-col items-center">
+    <section className="max-w-screen-xl mx-auto   flex flex-col items-center">
       {/* Slick Slider for mobile */}
       <div className="block lg:hidden w-full ">
         <Slider {...settings}>
