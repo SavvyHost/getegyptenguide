@@ -50,7 +50,7 @@ const Card = ({ imageSrc, title, content, created_at, id }) => {
 
   return (
     <div
-      className="group relative overflow-hidden rounded-none bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-none cursor-pointer bg-white shadow-lg transition-all duration-300 hover:shadow-xl"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}

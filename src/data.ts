@@ -68,7 +68,7 @@ export const flights = [
       bedInfo: "1 King Bed, City View",
     },
     {
-      id: 2,
+      id: 1,
       name: "Urban Stay Hotel",
       location: "Cairo, Egypt",
       rating: 4.2,
@@ -140,7 +140,7 @@ export const flights = [
       bedInfo: "2 King Beds, Sea View",
     },
     {
-      id: 6,
+      id: 1,
       name: "Historic Palace Hotel",
       location: "Luxor, Egypt",
       rating: 4.6,

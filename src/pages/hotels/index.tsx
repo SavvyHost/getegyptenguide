@@ -28,6 +28,13 @@ export default function HotelsPage() {
         />
       </div>
 
+      <div className="lg:block hidden">
+        <SearchBar
+          isMobile={false}
+          isOpen={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+        />
+      </div>
       <Box
         display={{ xs: "block", sm: "flex" }}
         gap={3}

@@ -220,7 +220,7 @@ export default function SearchBar({
       </Dialog>
 
       {/* Desktop Search */}
-      <div className="hidden sm:block">
+      <div className="hidden lg:block">
         <div className="max-w-7xl mx-auto bg-white rounded-lg border border-accent-yellow shadow-lg flex flex-col md:flex-row items-center justify-between p-6">
           {/* Location Input */}
           <Box className="flex-1 w-full mb-4 md:mb-0 md:mr-4">
